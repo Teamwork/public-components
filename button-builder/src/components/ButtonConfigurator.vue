@@ -68,8 +68,7 @@
       </div>
     </div>
     <div class="pa-8">
-      {{ redirectUri }}
-      <tw-login-button
+      <login-button
         :redirect="redirectUri"
         :client="clientId"
         :state="state"

@@ -1,5 +1,5 @@
 {
-  "name": "lit-element-starter-js",
+  "name": "@teamwork/login-button",
   "version": "0.0.0",
   "description": "A simple web component",
   "main": "login-button.js",

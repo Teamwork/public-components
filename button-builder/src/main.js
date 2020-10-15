@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import '../../src/tw-login-button';
+import '@teamwork/login-button';
 
 Vue.config.productionTip = false;
 
