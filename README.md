@@ -9,7 +9,7 @@ Public components to enhance your interaction with Teamwork
 *From the CDN*
 
 ```html
-<script src="https://cdn.teamwork.com/teamwork-login-button.js">
+<script src="https://cdn.teamwork.com/teamwork-login-button.js"></script>
 <teamwork-login-button
   redirectURI="https://www.myapp.com/"
   clientID="myClientID"
