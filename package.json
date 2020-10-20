@@ -22,7 +22,7 @@
     "test:update-snapshots": "karma start karma.conf.cjs --update-snapshots",
     "test:prune-snapshots": "karma start karma.conf.cjs --prune-snapshots",
     "checksize": "rollup -c ; cat login-button.bundled.js | gzip -9 | wc -c ; rm login-button.bundled.js",
-    "build": "echo \"This is not a TypeScript project, so no need to build.\""
+    "build": "rollup -c"
   },
   "keywords": [
     "web-components",
