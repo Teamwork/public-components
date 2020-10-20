@@ -3,14 +3,14 @@ import {fixture, html} from '@open-wc/testing';
 
 const assert = chai.assert;
 
-suite('login-button', () => {
+suite('teamwork-login-button', () => {
   test('is defined', () => {
-    const el = document.createElement('login-button');
+    const el = document.createElement('teamwork-login-button');
     assert.instanceOf(el, LoginButton);
   });
 
   test('renders with default values', async () => {
-    const el = await fixture(html`<login-button redirect="http://foo.com" client="client1"></login-button>`);
+    const el = await fixture(html`<teamwork-login-button redirectURI="http://foo.com" clientID="client1"></teamwork-login-button>`);
     assert.shadowDom.equal(
       el,
       `

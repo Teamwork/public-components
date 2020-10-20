@@ -207,14 +207,14 @@ export class LoginButton extends LitElement {
       /**
        * The client ID from the Developer Portal
        */
-      client: { 
+      clientID: { 
         type: String
       },
 
       /**
        * An URI to which the user will be redirected after login
        */
-      redirect: {
+      redirectURI: {
         type: String
       },
 
@@ -279,14 +279,14 @@ export class LoginButton extends LitElement {
   }
 
   get linkUrl() {
-    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${this.redirect}&client_id=${this.client}`;
+    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${this.redirectURI}&client_id=${this.clientID}`;
     if (this.state) url = `${url}&state=${this.state}`;
     return url;
   }
 
   render() {
     let disabled = false;
-    if (!this.redirect || !this.client) {
+    if (!this.redirectURI || !this.clientID) {
       disabled = true;
       console.error('Teamwork Login: redirect and client must be set');
     }
@@ -303,4 +303,4 @@ export class LoginButton extends LitElement {
   }
 }
 
-window.customElements.define('login-button', LoginButton);
+window.customElements.define('teamwork-login-button', LoginButton);
