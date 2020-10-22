@@ -1,7 +1,7 @@
-import {LoginButton} from '../login-button.js';
-import {fixture, html} from '@open-wc/testing';
+import { fixture, html } from '@open-wc/testing';
+import { LoginButton } from '../src/login-button';
 
-const assert = chai.assert;
+const { assert } = chai;
 
 suite('teamwork-login-button', () => {
   test('is defined', () => {
@@ -24,7 +24,7 @@ suite('teamwork-login-button', () => {
         >
           <span>Sign in with Teamwork</span>
         </a>
-      `
+      `,
     );
   });
 });

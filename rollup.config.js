@@ -13,23 +13,24 @@
  */
 
 import filesize from 'rollup-plugin-filesize';
-import {terser} from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 export default {
-  input: 'login-button.js',
+  input: 'src/login-button.js',
   output: {
-    file: 'login-button.bundled.js',
+    file: 'dist/login-button.js',
     format: 'esm',
   },
   onwarn(warning) {
     if (warning.code !== 'THIS_IS_UNDEFINED') {
+      // eslint-disable-next-line no-console
       console.error(`(!) ${warning.message}`);
     }
   },
   plugins: [
-    replace({'Reflect.decorate': 'undefined'}),
+    replace({ 'Reflect.decorate': 'undefined' }),
     resolve(),
     terser({
       module: true,
@@ -42,6 +43,6 @@ export default {
     }),
     filesize({
       showBrotliSize: true,
-    })
-  ]
-}
+    }),
+  ],
+};

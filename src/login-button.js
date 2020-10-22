@@ -1,4 +1,6 @@
-import {LitElement, html, css, svg, unsafeCSS} from 'lit-element';
+import {
+  LitElement, html, css, svg, unsafeCSS,
+} from 'lit-element';
 
 const logoIcon = svg`
 <svg viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -10,11 +12,10 @@ const logoIcon = svg`
 `;
 
 /**
- * An example element.
+ * Teamwork Login Button
  *
- * @slot - This element has a slot
- * @csspart button - The button
  */
+// eslint-disable-next-line import/prefer-default-export
 export class LoginButton extends LitElement {
   static get styles() {
     const baseColors = {
@@ -22,26 +23,26 @@ export class LoginButton extends LitElement {
       slate: unsafeCSS('#0B0E1F'),
       indigo: unsafeCSS('#4461D7'),
       pink: unsafeCSS('#FF22B1'),
-    }
-  
+    };
+
     const hoverColors = {
       slate: unsafeCSS('#303240'),
       indigo: unsafeCSS('#4E6EF2'),
       pink: unsafeCSS('#FF40BC'),
-    }
-  
+    };
+
     const activeColor = {
       white: unsafeCSS('#FAFBFC'),
       slate: unsafeCSS('#00020D'),
       indigo: unsafeCSS('#3351CC'),
       pink: unsafeCSS('#E50797'),
-    }
-  
+    };
+
     const bordersRadius = {
       default: unsafeCSS('4px'),
       rounded: unsafeCSS('24px'),
       square: unsafeCSS('0px'),
-    }
+    };
 
     return css`
       a {
@@ -63,7 +64,7 @@ export class LoginButton extends LitElement {
       }
 
       .tw-btn--size-large {
-        padding: 14px 16px;
+        padding: 12px 16px;
         font-size: 16px;
         font-weight: 600;
       }
@@ -80,7 +81,7 @@ export class LoginButton extends LitElement {
       }
 
       .tw-btn--size-medium {
-        padding: 10px 12px;
+        padding: 9px 12px;
         font-size: 14px;
         font-weight: 600;
       }
@@ -207,42 +208,42 @@ export class LoginButton extends LitElement {
       /**
        * The client ID from the Developer Portal
        */
-      clientID: { 
-        type: String
+      clientID: {
+        type: String,
       },
 
       /**
        * An URI to which the user will be redirected after login
        */
       redirectURI: {
-        type: String
+        type: String,
       },
 
       /**
        * Optional
        * This parameter will be attached to the final URL
        */
-      state: {type: String},
+      state: { type: String },
 
       /**
        * The size of the button (large | medium | small)
        */
-      size: {type: String},
+      size: { type: String },
 
       /**
        * The border radius (default | rounded | square)
        */
-      borders: {type: String},
+      borders: { type: String },
 
       /**
        * The color schema (slate | white | indigo | pink)
        */
-      color: {type: String},
+      color: { type: String },
 
       /**
        * Indicated whether only the icon should be rendered
        */
-      icon: {type: Boolean},
+      icon: { type: Boolean },
     };
   }
 
@@ -288,12 +289,13 @@ export class LoginButton extends LitElement {
     let disabled = false;
     if (!this.redirectURI || !this.clientID) {
       disabled = true;
+      // eslint-disable-next-line no-console
       console.error('Teamwork Login: redirect and client must be set');
     }
 
     let classes = [this.sizeClass, this.borderClass, this.colorClass, this.logoClass, this.iconClass].join(' ');
     const textHtml = this.icon ? '' : html`<span>Sign in with Teamwork</span>`;
-    if (disabled) classes = `${classes} disabled`
+    if (disabled) classes = `${classes} disabled`;
     return html`
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
       <a class="tw-btn ${classes}" href="${this.linkUrl}">
@@ -303,4 +305,7 @@ export class LoginButton extends LitElement {
   }
 }
 
-window.customElements.define('teamwork-login-button', LoginButton);
+/* This is kind of a hack that eases testing so the parent
+ * don't need to mock `window.customElements`
+ */
+if (window.customElements) window.customElements.define('teamwork-login-button', LoginButton);
