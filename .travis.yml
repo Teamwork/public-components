@@ -8,11 +8,10 @@ cache:
     - node_modules
 
 before_script:
-  - npm lint
   - npm test
 
 script:
-  - npm build
+  - npm run build
 
 before_deploy:
   - VERSION=''
