@@ -19,7 +19,7 @@ before_deploy:
   - DEPLOY_DIRECTORY="/"
   - 'if [ -n "$TRAVIS_TAG" ]; then
       VERSION=$TRAVIS_TAG;
-      DEPLOY_DIRECTORY+="/$VERSION";
+      DEPLOY_DIRECTORY="$VERSION";
     fi'
 
 deploy:
