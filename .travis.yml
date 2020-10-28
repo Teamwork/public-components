@@ -35,9 +35,10 @@ deploy:
 
   - provider: npm
     email: "developers@teamwork.com"
-    api_key:
-      secure: "$NPM_TOKEN"
+    api_key: $NPM_TOKEN
     skip_cleanup: true
+    tag: latest
     on:
       tags: true
+      repo: Teamwork/public-components
 
