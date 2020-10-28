@@ -1,0 +1,40 @@
+sudo: required
+language: node_js
+node_js:
+  - "8.9.1"
+
+cache:
+  directories:
+    - node_modules
+
+before_deploy:
+  - npm run build
+
+script:
+  - VERSION=''
+  - S3BUCKET="tw-public-components"
+  - DEPLOY_DIRECTORY="/"
+  - 'if [ -n "$TRAVIS_TAG" ]; then
+      VERSION=$TRAVIS_TAG;
+      DEPLOY_DIRECTORY+="/$VERSION";
+    fi'
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: $S3BUCKET
+    skip_cleanup: true
+    local_dir: dist
+    upload-dir: $DEPLOY_DIRECTORY
+    on:
+      tags: true
+
+  - provider: npm
+    email: "developers@teamwork.com"
+    api_key:
+      secure: "$NPM_SECRET_KEY" # TODO
+    skip_cleanup: true
+    on:
+      tags: true
+
