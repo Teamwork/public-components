@@ -7,12 +7,14 @@ cache:
   directories:
     - node_modules
 
-before_deploy:
+before_script:
   - npm lint
   - npm test
-  - npm build
 
 script:
+  - npm build
+
+before_deploy:
   - VERSION=''
   - S3BUCKET="tw-public-components"
   - DEPLOY_DIRECTORY="/"
