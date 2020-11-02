@@ -15,18 +15,17 @@ script:
 
 before_deploy:
   - VERSION=''
-  - S3BUCKET="tw-public-components"
-  - DEPLOY_DIRECTORY="/"
+  - DEPLOY_DIRECTORY="public/"
   - 'if [ -n "$TRAVIS_TAG" ]; then
       VERSION=$TRAVIS_TAG;
-      DEPLOY_DIRECTORY="$VERSION";
+      DEPLOY_DIRECTORY+="/$VERSION";
     fi'
 
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    bucket: $S3BUCKET
+    bucket: $S3_BUCKET
     skip_cleanup: true
     local_dir: dist
     upload-dir: $DEPLOY_DIRECTORY
