@@ -16,6 +16,7 @@ import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import cleanLicenses from './utils/rollup-clean-licenses';
 
 export default {
   input: 'src/login-button.js',
@@ -41,6 +42,7 @@ export default {
         },
       },
     }),
+    cleanLicenses(),
     filesize({
       showBrotliSize: true,
     }),
