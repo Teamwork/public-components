@@ -16,6 +16,8 @@ import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import minifyHTML from 'rollup-plugin-minify-html-literals';
+import cleanLicenses from './utils/rollup-clean-licenses';
 
 export default {
   input: 'src/login-button.js',
@@ -32,6 +34,7 @@ export default {
   plugins: [
     replace({ 'Reflect.decorate': 'undefined' }),
     resolve(),
+    minifyHTML(),
     terser({
       module: true,
       warnings: true,
@@ -41,6 +44,7 @@ export default {
         },
       },
     }),
+    cleanLicenses(),
     filesize({
       showBrotliSize: true,
     }),
