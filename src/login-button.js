@@ -243,7 +243,7 @@ export class LoginButton extends LitElement {
       /**
        * Indicated whether only the icon should be rendered
        */
-      icon: { type: Boolean },
+      iconOnly: { type: Boolean },
     };
   }
 
@@ -252,11 +252,11 @@ export class LoginButton extends LitElement {
     this.borders = 'default';
     this.size = 'medium';
     this.color = 'white';
-    this.icon = false;
+    this.iconOnly = false;
   }
 
   get iconClass() {
-    return this.icon ? 'tw-btn--icon' : null;
+    return this.iconOnly ? 'tw-btn--icon' : null;
   }
 
   get borderClass() {
@@ -294,7 +294,7 @@ export class LoginButton extends LitElement {
     }
 
     let classes = [this.sizeClass, this.borderClass, this.colorClass, this.logoClass, this.iconClass].join(' ');
-    const textHtml = this.icon ? '' : html`<span>Sign in with Teamwork</span>`;
+    const textHtml = this.iconOnly ? '' : html`<span>Sign in with Teamwork</span>`;
     if (disabled) classes = `${classes} disabled`;
     return html`
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">
