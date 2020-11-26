@@ -280,8 +280,9 @@ export class LoginButton extends LitElement {
   }
 
   get linkUrl() {
-    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${this.redirectURI}&client_id=${this.clientID}`;
-    if (this.state) url = `${url}&state=${this.state}`;
+    const urlParam = (uri) => encodeURIComponent(uri);
+    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${urlParam(this.redirectURI)}&client_id=${urlParam(this.clientID)}`;
+    if (this.state) url = `${url}&state=${urlParam(this.state)}`;
     return url;
   }
 
