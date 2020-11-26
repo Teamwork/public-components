@@ -243,7 +243,7 @@ export class LoginButton extends LitElement {
       /**
        * Indicated whether only the icon should be rendered
        */
-      icon: { type: Boolean },
+      iconOnly: { type: Boolean },
     };
   }
 
@@ -252,11 +252,11 @@ export class LoginButton extends LitElement {
     this.borders = 'default';
     this.size = 'medium';
     this.color = 'white';
-    this.icon = false;
+    this.iconOnly = false;
   }
 
   get iconClass() {
-    return this.icon ? 'tw-btn--icon' : null;
+    return this.iconOnly ? 'tw-btn--icon' : null;
   }
 
   get borderClass() {
@@ -280,8 +280,9 @@ export class LoginButton extends LitElement {
   }
 
   get linkUrl() {
-    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${this.redirectURI}&client_id=${this.clientID}`;
-    if (this.state) url = `${url}&state=${this.state}`;
+    const urlParam = (uri) => encodeURIComponent(uri);
+    let url = `https://www.teamwork.com/launchpad/login?redirect_uri=${urlParam(this.redirectURI)}&client_id=${urlParam(this.clientID)}`;
+    if (this.state) url = `${url}&state=${urlParam(this.state)}`;
     return url;
   }
 
@@ -294,7 +295,7 @@ export class LoginButton extends LitElement {
     }
 
     let classes = [this.sizeClass, this.borderClass, this.colorClass, this.logoClass, this.iconClass].join(' ');
-    const textHtml = this.icon ? '' : html`<span>Sign in with Teamwork</span>`;
+    const textHtml = this.iconOnly ? '' : html`<span>Sign in with Teamwork</span>`;
     if (disabled) classes = `${classes} disabled`;
     return html`
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap">

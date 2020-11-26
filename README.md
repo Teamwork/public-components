@@ -14,11 +14,11 @@ Public components to enhance your interaction with Teamwork
 <teamwork-login-button
   redirectURI="https://www.myapp.com/"
   clientID="myClientID"
-  icon="false"
+  iconOnly
   state="appstate"
   color="slate"
   size="large"
-  borders="default"
+  borders="rounded"
 />
 ```
 
@@ -49,3 +49,14 @@ And somewhere in you template:
 />
 ```
 
+### Parameters
+
+| Name          	| Default   	| Description                                             	| Allowed Values                                                       |
+|---------------	|-----------	|---------------------------------------------------------	|------------------------------------------------------------------------------	|
+| `clientID`    	|           	| **Required**. Client ID from the [Developer Portal](https://developer.teamwork.com/guides/how-to-authenticate-via-app-login-flow/)                 	|                                                                              	|
+| `redirectURI` 	|           	| **Required**. Redirect URI for your Developer Portal app 	|                                                                              	|
+| `state`       	|           	| Optional. Value will be passed to your redirect URI as a query parameter        	|                                                                              	|
+| `size`        	| `medium`  	| Size of the button                                      	| `large` `medium` `small`                                                     	|          	|
+| `borders`     	| `default` 	| Button border style                                      	| `default` `rounded` `square`                                                 	|          	|
+| `color`       	| `white`   	| Button color theme                                        | `slate` `white` `indigo` `pink`                                              	|          	|
+| `iconOnly`    	| `false`   	| Show a compact, icon-only version of the button       	| Attribute presence indicates `true` 	|          	|

@@ -20,7 +20,7 @@ suite('teamwork-login-button', () => {
         >
         <a
           class="tw-btn tw-btn--border-default tw-btn--color-white tw-btn--logo-default tw-btn--size-medium"
-          href="https://www.teamwork.com/launchpad/login?redirect_uri=http://foo.com&client_id=client1"
+          href="https://www.teamwork.com/launchpad/login?redirect_uri=http%3A%2F%2Ffoo.com&client_id=client1"
         >
           <span>Sign in with Teamwork</span>
         </a>
