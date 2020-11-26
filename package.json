@@ -1,6 +1,6 @@
 {
   "name": "@teamwork/login-button",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A simple web component",
   "main": "dist/login-button.js",
   "module": "dist/login-button.js",
@@ -31,8 +31,8 @@
     "lit-element",
     "javascript"
   ],
-  "author": "The Polymer Authors",
-  "license": "BSD-3-Clause",
+  "author": "Teamwork",
+  "license": "MIT",
   "dependencies": {
     "lit-element": "^2.3.1"
   },
