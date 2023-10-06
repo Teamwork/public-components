@@ -309,4 +309,4 @@ export class LoginButton extends LitElement {
 /* This is kind of a hack that eases testing so the parent
  * don't need to mock `window.customElements`
  */
-if (window.customElements) window.customElements.define('teamwork-login-button', LoginButton);
+if (window && window.customElements) window.customElements.define('teamwork-login-button', LoginButton);

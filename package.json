@@ -1,6 +1,6 @@
 {
   "name": "@teamwork/login-button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple web component",
   "main": "dist/login-button.js",
   "module": "dist/login-button.js",
